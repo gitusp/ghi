@@ -2029,6 +2029,15 @@ module GHI
         l = 9 + nmax + rmax + no_color { format_labels labels }.to_s.length
         a = i['assignee']
         a_is_me = a && a['login'] == Authorization.username
+
+        if a
+          puts "----------"
+          puts "n: #{n}"
+          puts "a['login']: #{a['login']}"
+          puts "Authorization.username: #{Authorization.username}"
+          puts "----------"
+        end
+
         l += a['login'].to_s.length + 2 if a
         p = i['pull_request']['html_url'] and l += 2 if i['pull_request']
         c = i['comments']
